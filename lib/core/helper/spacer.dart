@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-SizedBox verticalSpcae(double height) => SizedBox(height: height);
-SizedBox horizontalSpcae(double width) => SizedBox(width: width);
+SizedBox verticalSpace(double height) => SizedBox(height: height.h);
+SizedBox horizantalSpace(double width) => SizedBox(width: width.w);

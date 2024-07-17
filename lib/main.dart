@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/features/cart/ui/my_cart.dart';
 
 void main() {
-  runApp(const MyCart());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
