@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payment_integration/features/cart/ui/my_cart.dart';
+import 'package:payment_integration/features/cart/ui/screens/my_cart_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         title: 'payment integration',
-        home: MyCart(),
+        home: MyCartScreen(),
       ),
     );
   }

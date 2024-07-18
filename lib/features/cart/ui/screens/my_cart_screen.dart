@@ -1,29 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/helper/spacer.dart';
-import 'package:payment_integration/core/theming/colors.dart';
-import 'package:payment_integration/core/theming/styles.dart';
+import 'package:payment_integration/core/widgets/builf_appbar.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
 import 'package:payment_integration/features/cart/ui/widgets/custom_card_details.dart';
-import 'package:payment_integration/features/cart/ui/widgets/titile_and_price.dart';
 
-class MyCart extends StatelessWidget {
-  const MyCart({super.key});
+class MyCartScreen extends StatelessWidget {
+  const MyCartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          leading: const Icon(
-            Icons.arrow_back_rounded,
-          ),
-          centerTitle: true,
-          title: Text(
-            'My Cart',
-            style: StylesManager.font25BlckMedium,
-          ),
-        ),
+        appBar: buildAppBar("My Cart"),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(

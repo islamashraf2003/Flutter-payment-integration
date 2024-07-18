@@ -7,12 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:payment_integration/features/cart/ui/my_cart.dart';
+import 'package:payment_integration/features/cart/ui/screens/my_cart_screen.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyCart());
+    await tester.pumpWidget(const MyCartScreen());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

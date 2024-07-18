@@ -13,9 +13,10 @@ class CustomElevationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: ColorsManager.green,
-        fixedSize: Size(300.w, 50.h),
-      ),
+          backgroundColor: ColorsManager.green,
+          fixedSize: Size(300.w, 50.h),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.r))),
       onPressed: onPressed,
       child: Text(
         title,
