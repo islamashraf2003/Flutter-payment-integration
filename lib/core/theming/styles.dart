@@ -8,8 +8,8 @@ abstract class StylesManager {
     color: Colors.black,
     fontWeight: FontWeightManager.regular,
   );
-  static TextStyle font25BlckMedium = TextStyle(
-    fontSize: 25.sp,
+  static TextStyle font23BlckMedium = TextStyle(
+    fontSize: 23.sp,
     color: Colors.black,
     fontWeight: FontWeightManager.medium,
   );

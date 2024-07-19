@@ -9,7 +9,7 @@ AppBar buildAppBar(String title) {
     centerTitle: true,
     title: Text(
       title,
-      style: StylesManager.font25BlckMedium,
+      style: StylesManager.font23BlckMedium,
     ),
   );
 }
