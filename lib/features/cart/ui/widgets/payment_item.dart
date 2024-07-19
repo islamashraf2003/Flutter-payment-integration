@@ -17,7 +17,7 @@ class PaymentItem extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 600),
+          duration: const Duration(milliseconds: 300),
           child: Container(
             width: 140.w,
             height: 70.h,

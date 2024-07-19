@@ -18,9 +18,14 @@ abstract class StylesManager {
     color: Colors.black,
     fontWeight: FontWeightManager.semiBold,
   );
-  static TextStyle font22BlckMedium = TextStyle(
-    fontSize: 22.sp,
+  static TextStyle font22BlckMediumBlck = TextStyle(
+    fontSize: 20.sp,
     color: Colors.black,
+    fontWeight: FontWeightManager.semiBold,
+  );
+  static TextStyle font20BlckMediumWhite = TextStyle(
+    fontSize: 20.sp,
+    color: Colors.white,
     fontWeight: FontWeightManager.semiBold,
   );
 }
