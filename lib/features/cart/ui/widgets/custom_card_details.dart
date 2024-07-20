@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payment_integration/core/helper/spacer.dart';
 import 'package:payment_integration/core/theming/colors.dart';
 import 'package:payment_integration/core/theming/styles.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/titile_and_price.dart';
+import 'package:payment_integration/features/cart/ui/widgets/titile_and_price.dart';
 
 class CustomCardDetails extends StatelessWidget {
   const CustomCardDetails({super.key});

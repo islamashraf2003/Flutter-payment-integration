@@ -4,9 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payment_integration/core/helper/spacer.dart';
 import 'package:payment_integration/core/theming/colors.dart';
 import 'package:payment_integration/core/theming/styles.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/masterd_card_widget.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/thank_you_item.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/titile_and_price.dart';
+import 'package:payment_integration/features/cart/ui/widgets/masterd_card_widget.dart';
+import 'package:payment_integration/features/cart/ui/widgets/thank_you_item.dart';
+import 'package:payment_integration/features/cart/ui/widgets/titile_and_price.dart';
 
 class ThankYouBody extends StatelessWidget {
   const ThankYouBody({super.key});

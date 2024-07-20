@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/theming/colors.dart';
-import 'package:payment_integration/features/cart/logic/ui/screens/my_cart_screen.dart';
+import 'package:payment_integration/features/cart/ui/screens/my_cart_screen.dart';
 
 void main() {
   runApp(const MyApp());

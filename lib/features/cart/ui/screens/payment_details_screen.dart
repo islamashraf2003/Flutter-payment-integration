@@ -1,13 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/helper/spacer.dart';
 import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
-import 'package:payment_integration/features/cart/logic/ui/screens/thank_you_screen.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/custom_payment_credt_card.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/payment_items_list.dart';
+import 'package:payment_integration/features/cart/ui/screens/thank_you_screen.dart';
+import 'package:payment_integration/features/cart/ui/widgets/custom_payment_credt_card.dart';
 
 class PaymentDetailsScreen extends StatefulWidget {
   const PaymentDetailsScreen({super.key});

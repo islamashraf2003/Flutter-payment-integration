@@ -3,9 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/helper/spacer.dart';
 import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
-import 'package:payment_integration/features/cart/logic/ui/screens/payment_details_screen.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/custom_card_details.dart';
-import 'package:payment_integration/features/cart/logic/ui/widgets/payment_items_buttom_sheet.dart';
+import 'package:payment_integration/features/cart/ui/widgets/custom_card_details.dart';
+import 'package:payment_integration/features/cart/ui/widgets/payment_items_buttom_sheet.dart';
 
 class MyCartScreen extends StatelessWidget {
   const MyCartScreen({super.key});
