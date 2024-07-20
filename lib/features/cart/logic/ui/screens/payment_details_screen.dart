@@ -32,7 +32,6 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
             SliverToBoxAdapter(
               child: Column(
                 children: [
-                  const PaymentItemsList(),
                   verticalSpace(5),
                   CustomPaymentCredtCard(
                     formKey: formKey,
@@ -52,12 +51,14 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-                        log("payment is done");
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const ThankYouScreen();
+                            },
+                          ),
+                        );
                       } else {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const ThankYouScreen();
-                        }));
                         setState(
                           () {
                             autovalidateMode = AutovalidateMode.always;

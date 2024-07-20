@@ -5,6 +5,7 @@ import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
 import 'package:payment_integration/features/cart/logic/ui/screens/payment_details_screen.dart';
 import 'package:payment_integration/features/cart/logic/ui/widgets/custom_card_details.dart';
+import 'package:payment_integration/features/cart/logic/ui/widgets/payment_items_buttom_sheet.dart';
 
 class MyCartScreen extends StatelessWidget {
   const MyCartScreen({super.key});
@@ -27,11 +28,14 @@ class MyCartScreen extends StatelessWidget {
             CustomElevationButton(
                 title: "Complete Payment",
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const PaymentDetailsScreen(),
-                  ));
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return const PaymentItemsBottomSheet();
+                    },
+                  );
                 }),
-            verticalSpace(12)
+            verticalSpace(12),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/theming/colors.dart';
+import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/features/cart/logic/ui/widgets/check_widget.dart';
 import 'package:payment_integration/features/cart/logic/ui/widgets/custom_dash_line.dart';
 import 'package:payment_integration/features/cart/logic/ui/widgets/thank_you_body.dart';

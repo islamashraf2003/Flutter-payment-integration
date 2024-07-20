@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/features/cart/logic/ui/widgets/payment_item.dart';
 
-class PaymentItemsList extends StatefulWidget {
-  const PaymentItemsList({super.key});
+class PaymentItemsListView extends StatefulWidget {
+  const PaymentItemsListView({super.key});
 
   @override
-  State<PaymentItemsList> createState() => _PaymentItemsListState();
+  State<PaymentItemsListView> createState() => _PaymentItemsListViewState();
 }
 
-class _PaymentItemsListState extends State<PaymentItemsList> {
+class _PaymentItemsListViewState extends State<PaymentItemsListView> {
   List<String> paymentTypeImages = [
     "assets/images/card_payment_image.svg",
     "assets/images/paybal_image.svg"
