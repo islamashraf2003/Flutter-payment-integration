@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payment_integration/features/cart/ui/widgets/payment_item.dart';
+import 'package:payment_integration/features/cart/logic/ui/widgets/payment_item.dart';
 
 class PaymentItemsList extends StatefulWidget {
   const PaymentItemsList({super.key});

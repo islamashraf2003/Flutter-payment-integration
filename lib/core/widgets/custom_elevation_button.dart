@@ -24,7 +24,7 @@ class CustomElevationButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         title,
-        style: StylesManager.font20BlckMediumWhite,
+        style: StylesManager.font20MediumWhite,
       ),
     );
   }

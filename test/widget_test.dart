@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:payment_integration/features/cart/ui/screens/my_cart_screen.dart';
+import 'package:payment_integration/features/cart/logic/ui/screens/my_cart_screen.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

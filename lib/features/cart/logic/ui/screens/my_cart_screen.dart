@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/helper/spacer.dart';
-import 'package:payment_integration/core/widgets/builf_appbar.dart';
+import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
-import 'package:payment_integration/features/cart/ui/screens/payment_details_screen.dart';
-import 'package:payment_integration/features/cart/ui/widgets/custom_card_details.dart';
+import 'package:payment_integration/features/cart/logic/ui/screens/payment_details_screen.dart';
+import 'package:payment_integration/features/cart/logic/ui/widgets/custom_card_details.dart';
 
 class MyCartScreen extends StatelessWidget {
   const MyCartScreen({super.key});

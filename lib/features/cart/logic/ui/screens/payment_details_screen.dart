@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:payment_integration/core/widgets/builf_appbar.dart';
+import 'package:payment_integration/core/helper/spacer.dart';
+import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
-import 'package:payment_integration/features/cart/ui/widgets/custom_payment_credt_card.dart';
-import 'package:payment_integration/features/cart/ui/widgets/payment_items_list.dart';
+import 'package:payment_integration/features/cart/logic/ui/screens/thank_you_screen.dart';
+import 'package:payment_integration/features/cart/logic/ui/widgets/custom_payment_credt_card.dart';
+import 'package:payment_integration/features/cart/logic/ui/widgets/payment_items_list.dart';
 
 class PaymentDetailsScreen extends StatefulWidget {
   const PaymentDetailsScreen({super.key});
@@ -31,6 +33,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
               child: Column(
                 children: [
                   const PaymentItemsList(),
+                  verticalSpace(5),
                   CustomPaymentCredtCard(
                     formKey: formKey,
                     autovalidateMode: autovalidateMode,
@@ -51,9 +54,15 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                         formKey.currentState!.save();
                         log("payment is done");
                       } else {
-                        setState(() {
-                          autovalidateMode = AutovalidateMode.always;
-                        });
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return const ThankYouScreen();
+                        }));
+                        setState(
+                          () {
+                            autovalidateMode = AutovalidateMode.always;
+                          },
+                        );
                       }
                     },
                   ),
