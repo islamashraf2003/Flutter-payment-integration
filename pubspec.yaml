@@ -7,7 +7,9 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
+  build_runner: ^2.4.11
   cupertino_icons: ^1.0.6
+  dio: ^5.5.0+1
   flutter:
     sdk: flutter
   flutter_credit_card: ^4.0.1
@@ -16,6 +18,9 @@ dependencies:
   flutter_stripe: ^10.2.0
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
+  json_annotation: ^4.9.0
+  json_serializable: ^6.8.0
+  retrofit: ^4.1.0
 
 dev_dependencies:
   flutter_test:
