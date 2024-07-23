@@ -4,9 +4,9 @@ import 'package:payment_integration/core/helper/failure.dart';
 import 'package:payment_integration/core/payment/stripe_services.dart';
 import 'package:payment_integration/features/cart/data/models/payment_intent_input_model.dart';
 
-class StripeRepo {
+class StripeRepoImpl {
   StripeServices stripeServices;
-  StripeRepo(Dio dio) : stripeServices = StripeServices(dio);
+  StripeRepoImpl(Dio dio) : stripeServices = StripeServices(dio);
 
   Future<Either<Failure, void>> checkOutPayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
