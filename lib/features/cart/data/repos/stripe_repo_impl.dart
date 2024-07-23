@@ -20,12 +20,12 @@ class StripeRepoImpl {
   Future<PaymentIntentModel> createPaymentIntent(
       PaymentIntentInputModel paymentIntentInputModel) async {
     try {
-      var responce = await stripeServices.createPaymentIntent(
+      var response = await stripeServices.createPaymentIntent(
           paymentIntentInputModel.PaymentIntentInputModelToJson(),
           'Bearer ${ApiKeys.secretkey}',
           "application/x-www-form-urlencoded");
 
-      return responce;
+      return response;
     } on Exception catch (e) {
       log('Error creating payment intent: $e');
       rethrow;
@@ -33,12 +33,16 @@ class StripeRepoImpl {
   }
 
   Future intintPaymentSheet({required String paymentIntentClientSecret}) async {
-    Stripe.instance.initPaymentSheet(
+    await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: paymentIntentClientSecret,
         merchantDisplayName: "islam",
       ),
     );
+  }
+
+  Future displayPaymentSheet() async {
+    await Stripe.instance.presentPaymentSheet();
   }
 }
 //TODO : if exist any error in responce trye to parse to and from json like => var paymentIntent=PaymentIntent.fromJson(responce.toJson()); 
