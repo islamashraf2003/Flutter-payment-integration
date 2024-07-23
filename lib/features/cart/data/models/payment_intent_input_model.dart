@@ -1,8 +1,8 @@
-class PaymentIntentInputModelP {
+class PaymentIntentInputModel {
   String? amount;
   String? currency;
 
-  Map<String, dynamic> paymentIntentInputModelPToJson() => {
+  PaymentIntentInputModelToJson() => {
         'amount': amount,
         'currency': currency,
       };
