@@ -44,5 +44,13 @@ class StripeRepoImpl {
   Future displayPaymentSheet() async {
     await Stripe.instance.presentPaymentSheet();
   }
+
+  Future mackPayment(
+      {required PaymentIntentInputModel paymentIntentInputModel}) async {
+    var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
+    await intintPaymentSheet(
+        paymentIntentClientSecret: paymentIntentModel.clientSecret!);
+    await displayPaymentSheet();
+  }
 }
 //TODO : if exist any error in responce trye to parse to and from json like => var paymentIntent=PaymentIntent.fromJson(responce.toJson()); 
