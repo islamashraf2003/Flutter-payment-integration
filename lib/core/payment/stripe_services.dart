@@ -14,9 +14,9 @@ TODO: init paymennt sheet (paymentIntentClinetSecret)
 
 TODO: presentPayment
 */
-class StripeRepoImpl {
+class StripeServices {
   ApiService stripeServices;
-  StripeRepoImpl(Dio dio) : stripeServices = ApiService(dio);
+  StripeServices(Dio dio) : stripeServices = ApiService(dio);
   Future<PaymentIntentModel> createPaymentIntent(
       PaymentIntentInputModel paymentIntentInputModel) async {
     try {
