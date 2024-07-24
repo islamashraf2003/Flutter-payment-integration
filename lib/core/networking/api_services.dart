@@ -7,7 +7,7 @@ part 'api_services.g.dart';
 @RestApi(baseUrl: 'https://api.stripe.com/v1/')
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
-  @POST('/payment_intents')
+  @POST('payment_intents')
   Future<PaymentIntentModel> createPaymentIntent(
     @Body() PaymentIntentInputModel paymentIntentInputModelP,
     @Header('Authorization') String token,

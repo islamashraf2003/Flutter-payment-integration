@@ -33,7 +33,8 @@ class _ApiService implements ApiService {
       r'Content-Type': contentType,
     };
     _headers.removeWhere((k, v) => v == null);
-    final _data = paymentIntentInputModelP;
+    final _data = <String, dynamic>{};
+    _data.addAll(paymentIntentInputModelP.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<PaymentIntentModel>(Options(
       method: 'POST',
@@ -43,7 +44,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              '/payment_intents',
+              'payment_intents',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
+import 'package:payment_integration/features/cart/data/models/payment_intent_input_model.dart';
 import 'package:payment_integration/features/cart/logic/stripe/stripe_payment_cubit.dart';
 import 'package:payment_integration/features/cart/ui/screens/thank_you_screen.dart';
 
@@ -21,6 +22,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           );
         }
         if (state is StripePaymentFailure) {
+          Navigator.pop(context);
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
@@ -28,7 +30,13 @@ class CustomButtonBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomElevationButton(
           title: "Conteniue",
-          onPressed: () {},
+          onPressed: () {
+            PaymentIntentInputModel paymentIntentInputModel =
+                PaymentIntentInputModel(
+                    amount: "${200 * 100}", currency: "USD");
+            BlocProvider.of<StripePaymentCubit>(context).payWithStripe(
+                paymentIntentInputModel: paymentIntentInputModel);
+          },
           isLoading: state is StripePaymentLoading ? true : false,
         );
       },

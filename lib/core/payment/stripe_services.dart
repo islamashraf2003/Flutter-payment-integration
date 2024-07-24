@@ -21,9 +21,10 @@ class StripeServices {
       PaymentIntentInputModel paymentIntentInputModel) async {
     try {
       var response = await stripeServices.createPaymentIntent(
-          paymentIntentInputModel.PaymentIntentInputModelToJson(),
-          'Bearer ${ApiKeys.secretkey}',
-          "application/x-www-form-urlencoded");
+        paymentIntentInputModel,
+        'Bearer ${ApiKeys.secretkey}',
+        Headers.formUrlEncodedContentType,
+      );
 
       return response;
     } on Exception catch (e) {
@@ -48,6 +49,11 @@ class StripeServices {
   Future mackPayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
+
+    if (paymentIntentModel.clientSecret == null) {
+      throw Exception('Client Secret is null');
+    }
+
     await intintPaymentSheet(
         paymentIntentClientSecret: paymentIntentModel.clientSecret!);
     await displayPaymentSheet();
