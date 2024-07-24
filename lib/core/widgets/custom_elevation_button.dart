@@ -5,29 +5,35 @@ import 'package:payment_integration/core/theming/styles.dart';
 
 // ignore: must_be_immutable
 class CustomElevationButton extends StatelessWidget {
-  CustomElevationButton({
-    super.key,
+  final String title;
+  final void Function()? onPressed;
+  final Color? backgroundColor;
+  final bool isLoading;
+
+  const CustomElevationButton({
+    Key? key,
     required this.title,
     required this.onPressed,
     this.backgroundColor = ColorsManager.black,
     this.isLoading = false,
-  });
-  final String title;
-  void Function()? onPressed;
-  Color? backgroundColor;
-  bool isLoading;
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          fixedSize: Size(300.w, 50.h),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.r))),
+        backgroundColor: backgroundColor,
+        fixedSize: Size(300.w, 50.h),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.r),
+        ),
+      ),
       onPressed: onPressed,
       child: isLoading
-          ? const CircularProgressIndicator(
-              color: ColorsManager.white,
+          ? const Center(
+              child: CircularProgressIndicator(
+                color: ColorsManager.white,
+              ),
             )
           : Text(
               title,

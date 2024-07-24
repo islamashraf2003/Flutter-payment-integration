@@ -16,6 +16,7 @@ class StripePaymentCubit extends Cubit<StripePaymentState> {
 
   Future<void> payWithStripe(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
+    emit(StripePaymentLoading());
     var data = await stripeRepoImpl.checkOutPayment(
         paymentIntentInputModel: paymentIntentInputModel);
     data.fold((error) {
