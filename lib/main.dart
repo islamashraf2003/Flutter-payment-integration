@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:payment_integration/core/networking/api_keys.dart';
 import 'package:payment_integration/features/cart/ui/screens/my_cart_screen.dart';
 
-void main() {
+void main() async {
+  Stripe.publishableKey = ApiKeys.stripePublishableKey;
   runApp(const MyApp());
 }
 

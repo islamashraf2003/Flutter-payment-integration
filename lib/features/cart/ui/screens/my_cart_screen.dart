@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/helper/spacer.dart';
 import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
+import 'package:payment_integration/features/cart/logic/stripe/stripe_payment_cubit.dart';
 import 'package:payment_integration/features/cart/ui/widgets/custom_card_details.dart';
 import 'package:payment_integration/features/cart/ui/widgets/payment_items_buttom_sheet.dart';
 
@@ -30,7 +33,10 @@ class MyCartScreen extends StatelessWidget {
                   showModalBottomSheet(
                     context: context,
                     builder: (context) {
-                      return const PaymentItemsBottomSheet();
+                      return BlocProvider<StripePaymentCubit>(
+                        create: (context) => StripePaymentCubit(Dio()),
+                        child: const PaymentItemsBottomSheet(),
+                      );
                     },
                   );
                 }),
