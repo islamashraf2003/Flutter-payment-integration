@@ -33,7 +33,10 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           onPressed: () {
             PaymentIntentInputModel paymentIntentInputModel =
                 PaymentIntentInputModel(
-                    amount: "${200 * 100}", currency: "USD");
+              amount: "${200 * 100}",
+              currency: "USD",
+              customerId: "cus_QXWbEV4hGteQpJ",
+            );
             BlocProvider.of<StripePaymentCubit>(context).payWithStripe(
                 paymentIntentInputModel: paymentIntentInputModel);
           },

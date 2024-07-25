@@ -4,15 +4,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_integration/core/networking/api_keys.dart';
 import 'package:payment_integration/core/networking/api_services.dart';
+import 'package:payment_integration/features/cart/data/models/ephemeral_key_model/ephemeral_key_model.dart';
 import 'package:payment_integration/features/cart/data/models/payment_intent_input_model.dart';
 import 'package:payment_integration/features/cart/data/models/payment_intent_model/payment_intent_model.dart';
 
 /*
-TODO: paymentIntentObject create intent(amount,currency)
-
-TODO: init paymennt sheet (paymentIntentClinetSecret)
-
-TODO: presentPayment
+PaymentIntentModel create oayment intent(PaymentIntentInputModel); amount | currency | customerId
+keySecret createEphemraKey(stripeVersion customerId)
+intentPaymentSheet (merchanstDisplayName, intentClientSecret,emphemeralKeySheet)
+presemtPaymentSheet()
 */
 class StripeServices {
   ApiService stripeServices;
@@ -58,5 +58,21 @@ class StripeServices {
         paymentIntentClientSecret: paymentIntentModel.clientSecret!);
     await displayPaymentSheet();
   }
+
+  Future<EphemeralKeyModel> createEphemeralKey(
+      EphemeralKeyModel eohemeralKeyModel) async {
+    try {
+      var response = await stripeServices.createEohemeralKey(
+        "cus_QXWzr2XUZEVKH9",
+        'Bearer ${ApiKeys.secretkey}',
+        "2024-06-20",
+      );
+
+      return response;
+    } on Exception catch (e) {
+      log('Error creating payment intent: $e');
+      rethrow;
+    }
+  }
 }
-//TODO : if exist any error in responce trye to parse to and from json like => var paymentIntent=PaymentIntent.fromJson(responce.toJson()); 
+//TODO : if exist any error in responce trye to parse to and from json like => var paymentIntent=PaymentIntent.fromJson(responce.toJson());
