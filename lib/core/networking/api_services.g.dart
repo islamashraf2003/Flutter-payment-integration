@@ -58,7 +58,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<EphemeralKeyModel> createEohemeralKey(
+  Future<EphemeralKeyModel> createEphemeralKey(
     String customerId,
     String token,
     String stripeVersion,
@@ -70,12 +70,13 @@ class _ApiService implements ApiService {
       r'Stripe-Version': stripeVersion,
     };
     _headers.removeWhere((k, v) => v == null);
-    const Map<String, dynamic>? _data = null;
+    final _data = {'customer': customerId};
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<EphemeralKeyModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
             .compose(
               _dio.options,

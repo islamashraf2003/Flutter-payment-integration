@@ -11,7 +11,7 @@ class StripeRepoImpl {
   Future<Either<Failure, void>> checkOutPayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     try {
-      await stripeServices.mackPayment(
+      await stripeServices.makePayment(
           paymentIntentInputModel: paymentIntentInputModel);
       return right(null);
     } on Exception catch (e) {

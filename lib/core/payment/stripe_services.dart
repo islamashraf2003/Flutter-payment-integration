@@ -5,6 +5,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_integration/core/networking/api_keys.dart';
 import 'package:payment_integration/core/networking/api_services.dart';
 import 'package:payment_integration/features/cart/data/models/ephemeral_key_model/ephemeral_key_model.dart';
+import 'package:payment_integration/features/cart/data/models/init_payment_sheet_input_model.dart';
 import 'package:payment_integration/features/cart/data/models/payment_intent_input_model.dart';
 import 'package:payment_integration/features/cart/data/models/payment_intent_model/payment_intent_model.dart';
 
@@ -17,6 +18,7 @@ presemtPaymentSheet()
 class StripeServices {
   ApiService stripeServices;
   StripeServices(Dio dio) : stripeServices = ApiService(dio);
+
   Future<PaymentIntentModel> createPaymentIntent(
       PaymentIntentInputModel paymentIntentInputModel) async {
     try {
@@ -25,7 +27,6 @@ class StripeServices {
         'Bearer ${ApiKeys.secretkey}',
         Headers.formUrlEncodedContentType,
       );
-
       return response;
     } on Exception catch (e) {
       log('Error creating payment intent: $e');
@@ -33,10 +34,13 @@ class StripeServices {
     }
   }
 
-  Future intintPaymentSheet({required String paymentIntentClientSecret}) async {
+  Future initPaymentSheet(
+      {required InitPaymentSheetInputModel initPaymentSheetModel}) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
-        paymentIntentClientSecret: paymentIntentClientSecret,
+        paymentIntentClientSecret: initPaymentSheetModel.clientSecret,
+        customerEphemeralKeySecret: initPaymentSheetModel.ephemeralKeySecret,
+        customerId: initPaymentSheetModel.customerId,
         merchantDisplayName: "islam",
       ),
     );
@@ -46,33 +50,37 @@ class StripeServices {
     await Stripe.instance.presentPaymentSheet();
   }
 
-  Future mackPayment(
+  Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     var paymentIntentModel = await createPaymentIntent(paymentIntentInputModel);
-
+    var ephemeralKeyModel = await createEphemeralKey(
+        customerId: paymentIntentInputModel.customerId!);
+    var initPaymentSheetModel = InitPaymentSheetInputModel(
+        clientSecret: paymentIntentModel.clientSecret!,
+        ephemeralKeySecret: ephemeralKeyModel.secret!,
+        customerId: paymentIntentInputModel.customerId);
     if (paymentIntentModel.clientSecret == null) {
       throw Exception('Client Secret is null');
     }
 
-    await intintPaymentSheet(
-        paymentIntentClientSecret: paymentIntentModel.clientSecret!);
+    await initPaymentSheet(
+      initPaymentSheetModel: initPaymentSheetModel,
+    );
     await displayPaymentSheet();
   }
 
   Future<EphemeralKeyModel> createEphemeralKey(
-      EphemeralKeyModel eohemeralKeyModel) async {
+      {required String customerId}) async {
     try {
-      var response = await stripeServices.createEohemeralKey(
-        "cus_QXWzr2XUZEVKH9",
+      var response = await stripeServices.createEphemeralKey(
+        customerId,
         'Bearer ${ApiKeys.secretkey}',
-        "2024-06-20",
+        '2024-06-20',
       );
-
       return response;
     } on Exception catch (e) {
-      log('Error creating payment intent: $e');
+      log('Error creating ephemeral key: $e');
       rethrow;
     }
   }
 }
-//TODO : if exist any error in responce trye to parse to and from json like => var paymentIntent=PaymentIntent.fromJson(responce.toJson());

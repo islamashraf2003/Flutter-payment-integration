@@ -8,16 +8,18 @@ part 'api_services.g.dart';
 @RestApi(baseUrl: 'https://api.stripe.com/v1/')
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
+
   @POST('payment_intents')
   Future<PaymentIntentModel> createPaymentIntent(
     @Body() PaymentIntentInputModel paymentIntentInputModelP,
     @Header('Authorization') String token,
     @Header('Content-Type') String contentType,
   );
-  // Create an Ephemeral Key for the Customer
+
   @POST('ephemeral_keys')
-  Future<EphemeralKeyModel> createEohemeralKey(
-    String customerId,
+  @FormUrlEncoded()
+  Future<EphemeralKeyModel> createEphemeralKey(
+    @Field('customer') String customerId,
     @Header('Authorization') String token,
     @Header('Stripe-Version') String stripeVersion,
   );
