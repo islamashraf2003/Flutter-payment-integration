@@ -22,19 +22,20 @@ class MasterdCardWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-              flex: 4,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Credit Card",
-                    style: StylesManager.font18BlckRegular,
-                  ),
-                  verticalSpace(4),
-                  const Text("Mastercard **78"),
-                ],
-              )),
+            flex: 4,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Credit Card",
+                  style: StylesManager.font18BlckRegular,
+                ),
+                verticalSpace(4),
+                const Text("Mastercard **78"),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:payment_integration/core/theming/styles.dart';
 
-AppBar buildAppBar(String? title) {
+AppBar buildAppBar(String? title, context) {
   return AppBar(
-    leading: const Icon(
-      Icons.arrow_back_rounded,
-    ),
+    leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: const Icon(
+          Icons.arrow_back_rounded,
+        )),
     centerTitle: true,
     title: Text(
       title ?? "",

@@ -19,7 +19,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar("Payment Details"),
+      appBar: buildAppBar("Payment Details", context),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 16.w,

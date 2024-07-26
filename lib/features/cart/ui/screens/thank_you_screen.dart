@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:payment_integration/core/theming/colors.dart';
+import 'package:payment_integration/core/widgets/build_appbar.dart';
 import 'package:payment_integration/features/cart/ui/widgets/check_widget.dart';
 import 'package:payment_integration/features/cart/ui/widgets/custom_dash_line.dart';
 import 'package:payment_integration/features/cart/ui/widgets/thank_you_body.dart';
@@ -11,9 +12,11 @@ class ThankYouScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar("", context),
       backgroundColor: ColorsManager.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
+        padding:
+            EdgeInsets.only(left: 20.w, right: 20.w, bottom: 16.h, top: 35.h),
         child: Stack(
           clipBehavior: Clip.none,
           children: [

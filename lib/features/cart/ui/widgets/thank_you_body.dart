@@ -28,17 +28,17 @@ class ThankYouBody extends StatelessWidget {
             "Your transaction was successful",
             style: StylesManager.font16RegularBlack,
           ),
-          verticalSpace(18),
+          verticalSpace(12),
           const ThankYouItem(
             title: "Date",
             value: "07/20/2024",
           ),
-          verticalSpace(10),
+          verticalSpace(8),
           const ThankYouItem(
             title: "Time",
             value: "10:15 AM",
           ),
-          verticalSpace(10),
+          verticalSpace(8),
           const ThankYouItem(
             title: "To",
             value: "mazen",
@@ -52,7 +52,7 @@ class ThankYouBody extends StatelessWidget {
             price: 50.97,
             style: StylesManager.font23BlckSemiBold,
           ),
-          verticalSpace(20),
+          verticalSpace(10),
           Container(
             width: double.infinity,
             height: 65.h,
@@ -62,7 +62,7 @@ class ThankYouBody extends StatelessWidget {
             ),
             child: const MasterdCardWidget(),
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
