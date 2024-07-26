@@ -18,3 +18,24 @@ PayPal is a widely recognized and trusted payment platform that allows users to 
 - **Secure Transactions**: Both payment gateways ensure the highest level of security for user transactions.
 
 By offering both Stripe and PayPal, this project aims to provide a comprehensive and user-friendly payment solution for diverse needs.
+
+## <span style="font-size: 1.5em; font-weight: bold;">My Cart Screen</span>
+
+![Screenshot_1722018108](https://github.com/user-attachments/assets/81205c4e-7720-44dd-94df-655607cc9e9f)
+
+## <span style="font-size: 1.5em; font-weight: bold;">Payments Type</span>
+
+![Screenshot_1722018123](https://github.com/user-attachments/assets/5776992f-d9b0-4d45-a0a7-24c7383c1a6e)
+
+## <span style="font-size: 1.5em; font-weight: bold;">Stripe</span>
+
+![Screenshot_1722018160](https://github.com/user-attachments/assets/93848b5a-67c3-445a-9a6a-7c1610fec386)
+
+## <span style="font-size: 1.5em; font-weight: bold;">PayPal</span>
+
+![Screenshot_1722018200](https://github.com/user-attachments/assets/9ac9dba4-461b-4079-90ad-7fa052fd8ab8)
+
+## <span style="font-size: 1.5em; font-weight: bold;">Thank you screen</span>
+
+![Screenshot_1722018170](https://github.com/user-attachments/assets/07a0ea3e-f582-498a-bba3-4395df72f893)
+
