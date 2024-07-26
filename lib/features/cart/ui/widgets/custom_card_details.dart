@@ -38,8 +38,8 @@ class CustomCardDetails extends StatelessWidget {
         ),
         verticalSpace(5),
         TitleAndPrice(
-          title: "Shipping",
-          price: 8,
+          title: "Total",
+          price: 50.97,
           style: StylesManager.font23BlckSemiBold,
         ),
       ],

@@ -22,8 +22,8 @@ class MyCartScreen extends StatelessWidget {
           children: [
             verticalSpace(10),
             Expanded(
-                child: Center(
-                    child: Image.asset("assets/images/basket_images.png"))),
+                child:
+                    Center(child: Image.asset("assets/images/red_chair.png"))),
             verticalSpace(20),
             const CustomCardDetails(),
             verticalSpace(10),

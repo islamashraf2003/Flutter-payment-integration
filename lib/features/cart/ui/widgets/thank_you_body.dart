@@ -31,7 +31,7 @@ class ThankYouBody extends StatelessWidget {
           verticalSpace(12),
           const ThankYouItem(
             title: "Date",
-            value: "07/20/2024",
+            value: "07/26/2024",
           ),
           verticalSpace(8),
           const ThankYouItem(
@@ -41,7 +41,7 @@ class ThankYouBody extends StatelessWidget {
           verticalSpace(8),
           const ThankYouItem(
             title: "To",
-            value: "mazen",
+            value: "islam",
           ),
           Divider(
             height: 40.h,
