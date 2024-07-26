@@ -5,6 +5,7 @@ part 'details.g.dart';
 class Details {
   String? subtotal;
   String? shipping;
+  @JsonKey(name: "shipping_discount")
   int? shippingDiscount;
 
   Details({this.subtotal, this.shipping, this.shippingDiscount});

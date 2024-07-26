@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:payment_integration/core/networking/api_keys.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
 import 'package:payment_integration/features/cart/data/models/paybal_model/amount_model/amount_model.dart';
 import 'package:payment_integration/features/cart/data/models/paybal_model/amount_model/details.dart';
@@ -37,6 +38,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
         return CustomElevationButton(
           title: "Conteniue",
           onPressed: () {
+            //-------------Stripe payment---------
             // PaymentIntentInputModel paymentIntentInputModel =
             //     PaymentIntentInputModel(
             //   amount: "${200 * 100}",
@@ -47,50 +49,64 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             //     paymentIntentInputModel: paymentIntentInputModel);
 
             //-----------------Paybal------------
-            var amount = AmountModel(
-              total: "100",
-              currency: "USD",
-              details:
-                  Details(shipping: "0", shippingDiscount: 0, subtotal: "100"),
-            );
-            List<Item> items = [
-              Item(currency: "USD", price: "4", quantity: 10, name: "Apple"),
-              Item(currency: "USD", price: "5", quantity: 12, name: "Apple"),
-            ];
-            var itemsList = ItemsListModel(items: items);
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (BuildContext context) => PaypalCheckoutView(
-                  sandboxMode: true,
-                  clientId: "YOUR CLIENT ID",
-                  secretKey: "YOUR SECRET KEY",
-                  transactions: [
-                    {
-                      "amount": amount.toJson(),
-                      "description": "The payment transaction description.",
-                      "item_list": itemsList.toJson(),
-                    }
-                  ],
-                  note: "Contact us for any questions on your order.",
-                  onSuccess: (Map params) async {
-                    log("onSuccess: $params");
-                    Navigator.pop(context);
-                  },
-                  onError: (error) {
-                    log("onError: $error");
-                    Navigator.pop(context);
-                  },
-                  onCancel: () {
-                    log('cancelled:');
-                    Navigator.pop(context);
-                  },
-                ),
-              ),
-            );
+            var paybalTranscationData = getPaybalTransactionData();
+            executePaybalPayment(context, paybalTranscationData);
           },
           isLoading: state is StripePaymentLoading ? true : false,
         );
       },
     );
+  }
+
+  void executePaybalPayment(BuildContext context,
+      ({AmountModel amount, ItemsListModel itemsList}) paybalTranscationData) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => PaypalCheckoutView(
+          sandboxMode: true,
+          clientId: ApiKeys.paybalClientId,
+          secretKey: ApiKeys.paybalSecretKey,
+          transactions: [
+            {
+              "amount": paybalTranscationData.amount.toJson(),
+              "description": "The payment transaction description.",
+              "item_list": paybalTranscationData.itemsList.toJson(),
+            }
+          ],
+          note: "Contact us for any questions on your order.",
+          onSuccess: (Map params) async {
+            Navigator.pop(context);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ThankYouScreen(),
+                ));
+          },
+          onError: (error) {
+            log("onError: $error");
+            Navigator.pop(context);
+          },
+          onCancel: () {
+            log('cancelled:');
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  }
+
+  //record data type
+  ({AmountModel amount, ItemsListModel itemsList}) getPaybalTransactionData() {
+    var amount = AmountModel(
+      total: "100",
+      currency: "USD",
+      details: Details(shipping: "0", shippingDiscount: 0, subtotal: "100"),
+    );
+    List<Item> items = [
+      Item(currency: "USD", price: "4", quantity: 10, name: "Apple"),
+      Item(currency: "USD", price: "5", quantity: 12, name: "Apple"),
+    ];
+    var itemsList = ItemsListModel(items: items);
+    return (amount: amount, itemsList: itemsList);
   }
 }

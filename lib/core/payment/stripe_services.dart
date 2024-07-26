@@ -24,7 +24,7 @@ class StripeServices {
     try {
       var response = await stripeServices.createPaymentIntent(
         paymentIntentInputModel,
-        'Bearer ${ApiKeys.secretkey}',
+        'Bearer ${ApiKeys.stripeSecretkey}',
         Headers.formUrlEncodedContentType,
       );
       return response;
@@ -74,7 +74,7 @@ class StripeServices {
     try {
       var response = await stripeServices.createEphemeralKey(
         customerId,
-        'Bearer ${ApiKeys.secretkey}',
+        'Bearer ${ApiKeys.stripeSecretkey}',
         '2024-06-20',
       );
       return response;

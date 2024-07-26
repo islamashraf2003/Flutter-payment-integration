@@ -9,11 +9,11 @@ part of 'details.dart';
 Details _$DetailsFromJson(Map<String, dynamic> json) => Details(
       subtotal: json['subtotal'] as String?,
       shipping: json['shipping'] as String?,
-      shippingDiscount: (json['shippingDiscount'] as num?)?.toInt(),
+      shippingDiscount: (json['shipping_discount'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$DetailsToJson(Details instance) => <String, dynamic>{
       'subtotal': instance.subtotal,
       'shipping': instance.shipping,
-      'shippingDiscount': instance.shippingDiscount,
+      'shipping_discount': instance.shippingDiscount,
     };
