@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payment_integration/core/widgets/custom_elevation_button.dart';
+import 'package:payment_integration/features/cart/data/models/paybal_model/amount_model/amount_model.dart';
+import 'package:payment_integration/features/cart/data/models/paybal_model/amount_model/details.dart';
+import 'package:payment_integration/features/cart/data/models/paybal_model/items_list_model/item.dart';
+import 'package:payment_integration/features/cart/data/models/paybal_model/items_list_model/items_list_model.dart';
 import 'package:payment_integration/features/cart/logic/stripe/stripe_payment_cubit.dart';
 import 'package:payment_integration/features/cart/ui/screens/thank_you_screen.dart';
 
@@ -41,40 +45,30 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             // );
             // BlocProvider.of<StripePaymentCubit>(context).payWithStripe(
             //     paymentIntentInputModel: paymentIntentInputModel);
+
+            //-----------------Paybal------------
+            var amount = AmountModel(
+              total: "100",
+              currency: "USD",
+              details:
+                  Details(shipping: "0", shippingDiscount: 0, subtotal: "100"),
+            );
+            List<Item> items = [
+              Item(currency: "USD", price: "4", quantity: 10, name: "Apple"),
+              Item(currency: "USD", price: "5", quantity: 12, name: "Apple"),
+            ];
+            var itemsList = ItemsListModel(items: items);
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (BuildContext context) => PaypalCheckoutView(
                   sandboxMode: true,
                   clientId: "YOUR CLIENT ID",
                   secretKey: "YOUR SECRET KEY",
-                  transactions: const [
+                  transactions: [
                     {
-                      "amount": {
-                        "total": '100',
-                        "currency": "USD",
-                        "details": {
-                          "subtotal": '100',
-                          "shipping": '0',
-                          "shipping_discount": 0
-                        }
-                      },
+                      "amount": amount.toJson(),
                       "description": "The payment transaction description.",
-                      "item_list": {
-                        "items": [
-                          {
-                            "name": "Apple",
-                            "quantity": 4,
-                            "price": '10',
-                            "currency": "USD"
-                          },
-                          {
-                            "name": "Pineapple",
-                            "quantity": 5,
-                            "price": '12',
-                            "currency": "USD"
-                          }
-                        ],
-                      }
+                      "item_list": itemsList.toJson(),
                     }
                   ],
                   note: "Contact us for any questions on your order.",
@@ -87,7 +81,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   onCancel: () {
-                    print('cancelled:');
+                    log('cancelled:');
                     Navigator.pop(context);
                   },
                 ),
