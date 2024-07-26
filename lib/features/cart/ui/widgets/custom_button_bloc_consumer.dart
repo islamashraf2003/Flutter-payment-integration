@@ -9,6 +9,8 @@ import 'package:payment_integration/features/cart/data/models/paybal_model/amoun
 import 'package:payment_integration/features/cart/data/models/paybal_model/amount_model/details.dart';
 import 'package:payment_integration/features/cart/data/models/paybal_model/items_list_model/item.dart';
 import 'package:payment_integration/features/cart/data/models/paybal_model/items_list_model/items_list_model.dart';
+import 'package:payment_integration/features/cart/data/models/payment_intent_input_model.dart';
+import 'package:payment_integration/features/cart/logic/payment_type/payment_type_cubit.dart';
 import 'package:payment_integration/features/cart/logic/stripe/stripe_payment_cubit.dart';
 import 'package:payment_integration/features/cart/ui/screens/thank_you_screen.dart';
 
@@ -38,19 +40,23 @@ class CustomButtonBlocConsumer extends StatelessWidget {
         return CustomElevationButton(
           title: "Conteniue",
           onPressed: () {
-            //-------------Stripe payment---------
-            // PaymentIntentInputModel paymentIntentInputModel =
-            //     PaymentIntentInputModel(
-            //   amount: "${200 * 100}",
-            //   currency: "USD",
-            //   customerId: "cus_QXWbEV4hGteQpJ",
-            // );
-            // BlocProvider.of<StripePaymentCubit>(context).payWithStripe(
-            //     paymentIntentInputModel: paymentIntentInputModel);
-
-            //-----------------Paybal------------
-            var paybalTranscationData = getPaybalTransactionData();
-            executePaybalPayment(context, paybalTranscationData);
+            int selectedPaymentTypeIndex =
+                context.read<PaymentTypeCubit>().state;
+            //Stripe
+            if (selectedPaymentTypeIndex == 0) {
+              PaymentIntentInputModel paymentIntentInputModel =
+                  PaymentIntentInputModel(
+                amount: "${200 * 100}",
+                currency: "USD",
+                customerId: "cus_QXWbEV4hGteQpJ",
+              );
+              BlocProvider.of<StripePaymentCubit>(context).payWithStripe(
+                  paymentIntentInputModel: paymentIntentInputModel);
+            } else if (selectedPaymentTypeIndex == 1) {
+              //-----------------Paybal------------
+              var paybalTranscationData = getPaybalTransactionData();
+              executePaybalPayment(context, paybalTranscationData);
+            }
           },
           isLoading: state is StripePaymentLoading ? true : false,
         );

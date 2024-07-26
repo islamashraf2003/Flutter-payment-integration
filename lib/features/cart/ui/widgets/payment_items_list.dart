@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:payment_integration/features/cart/logic/payment_type/payment_type_cubit.dart';
 import 'package:payment_integration/features/cart/ui/widgets/payment_item.dart';
 
 class PaymentItemsListView extends StatefulWidget {
@@ -34,6 +36,9 @@ class _PaymentItemsListViewState extends State<PaymentItemsListView> {
                 setState(
                   () {
                     activeIndex = index;
+                    context
+                        .read<PaymentTypeCubit>()
+                        .selectPaymentType(activeIndex);
                   },
                 );
               },
